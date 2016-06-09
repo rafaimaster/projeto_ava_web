@@ -1,0 +1,28 @@
+package br.com.api.ava.vo;
+
+
+public class AlternativaVO {
+
+	private Long id;
+    private String descricao;
+    private Boolean selecionada;
+    
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getDescricao() {
+		return descricao;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	public Boolean getSelecionada() {
+		return selecionada;
+	}
+	public void setSelecionada(Boolean selecionada) {
+		this.selecionada = selecionada;
+	}
+}
