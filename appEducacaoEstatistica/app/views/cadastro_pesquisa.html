@@ -1,0 +1,52 @@
+
+<md-content class="md-padding" ng-controller="PesquisaCtrl as pesquisaCtrl">
+
+	<md-button class="md-fab md-primary" aria-label="Voltar" ng-href="#/lista_pesquisa">
+        <md-icon md-svg-src="images/ic_arrow_back_white_48px.svg"></md-icon>
+    </md-button>
+
+	<h3 class="page-header">Pesquisa</h3>
+
+	<form name="form" role="form" ng-submit="addPesquisa()" cg-busy="promessaFormulario">
+
+		<md-input-container class="md-block" flex-gt-sm>
+			<label>Título</label>
+			<input name="nome" ng-model="pesquisa.titulo" ng-required="true" ng-focus="true">
+		</md-input-container>
+          
+        
+		<md-input-container class="md-block" flex-gt-sm>
+			<label>Subtítulo</label>
+			<input name="nome" ng-model="pesquisa.subTitulo" ng-required="true" ng-focus="true">
+		</md-input-container>
+		
+		<md-datepicker  flex-gt-xs name="dataEncerramento" ng-model="pesquisa.dataEncerramento" md-placeholder="Encerramento"
+			md-min-date="minDate">
+		</md-datepicker>
+	<br/>
+	
+	<br/>
+		<button class="btn btn-success">SALVAR</button>
+		
+	</form>
+
+	<md-content class="md-padding" ng-show="pesquisa.id != undefined">
+		<div>
+		    <h3><md-button class="md-fab md-primary" aria-label="Novo Aluno" ng-click="novaPergunta(pesquisa, $event)">
+		        <md-icon md-svg-src="images/ic_add_white_48px.svg"></md-icon>
+		    </md-button>Incluir nova pergunta</h3>
+	    </div>
+	
+	  	<!-- lista de turmas -->
+		<md-list ng-cloak ng-repeat="pergunta in perguntas">
+			<md-list-item class="secondary-button-padding" ng-click="true" aria-label="Pergunta">
+				<!-- botao de exclusao -->
+				<md-button class="md-fab md-mini" aria-label="Remover Pergunta" ng-click="confirmaExclusaoPergunta(pergunta, $event)">
+		        	<md-icon md-svg-src="images/ic_delete_white_48px.svg"></md-icon>
+		    	</md-button>
+				<p ng-click="editPergunta(pergunta, $event)">{{ pergunta.descricao }}</p>
+			</md-list-item>
+		</md-list>
+	</md-content>
+
+</md-content>

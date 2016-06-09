@@ -1,0 +1,79 @@
+
+<div class="container-fluid" ng-controller="AlunoCtrl as alunoCtrl">
+
+<md-button class="md-fab md-primary" aria-label="Voltar" ng-click="limparFormulario()">
+        <md-icon md-svg-src="images/ic_arrow_back_white_48px.svg"></md-icon>
+    </md-button>
+
+	
+
+		<div ng-repeat="(key,val) in alerts" class="alert {{key}}" role="alert">
+	    	<button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="clearAlerts()">
+	      		<span aria-hidden="true">&times;</span>
+	      	</button>
+	        <div ng-repeat="msg in val">{{msg}}</div>
+	    </div>
+
+		<h1 class="page-header">Cadastro</h1>
+
+		<form name="form" role="form" ng-submit="addUsuario()" cg-busy="promessaFormulario">
+
+			<div layout-gt-xs="row">
+			<md-input-container class="md-block" flex-gt-sm>
+				<label>Nome</label>
+				<input name="nome" ng-model="usuario.nome" ng-required="true" autofocus>
+			</md-input-container>
+
+
+		    <md-input-container class="md-block" flex-gt-sm>
+	        	<label>E-mail</label>
+	            <input type="email" ng-model="usuario.loginUsuario.email" ng-required="true">
+	        </md-input-container>
+	    </div>
+	       	<div layout-gt-xs="row">
+			    <md-input-container class="md-block" flex-gt-xs>
+		        	<label>Sexo</label>
+		        	<md-select ng-model="sexo" ng-model-options="{trackBy: '$value.id'}" ng-required="true">
+	            	<md-option ng-repeat="sexo in generos" ng-value="{{sexo}}">
+	            		{{sexo.nome}}
+	            	</md-option>
+		        	</md-select>
+		        </md-input-container>
+
+				<md-datepicker  flex-gt-xs name="dtCadastro" ng-model="usuario.dtNascimento" md-placeholder="Nascimento" ng-required="true">
+				</md-datepicker>
+	       	</div>
+	       
+
+	       	<md-card>
+				<md-card-title>
+				  <md-card-title-text>
+				    <span class="md-headline">Informações para autenticação</span>
+				  </md-card-title-text>
+				  
+				</md-card-title>
+				<md-card-content>
+						<md-input-container class="md-block" flex-gt-xs>
+				    	<label>Usuário</label>
+				    	<input ng-model="usuario.loginUsuario.email" disabled>
+				    </md-input-container>
+
+				    <md-input-container class="md-block" flex-gt-xs>
+				    	<label>Senha</label>
+						<input type="password" id="inputSenha" ng-model="usuario.loginUsuario.senha"
+								ng-required="true">
+					</md-input-container>
+
+					<md-input-container class="md-block" flex-gt-xs>
+				    	<label>Confirmação de Senha</label>
+						<input type="password" id="inputConfirmacaoSenha" ng-model="valorConfirmacaoSenha"
+								ng-required="true">
+					</md-input-container>
+				</md-card-content>
+			</md-card>
+
+
+			<button class="btn btn-success">SALVAR</button>
+		</form>
+	
+</div>

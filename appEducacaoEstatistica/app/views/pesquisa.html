@@ -1,0 +1,104 @@
+<div class="header cabecalho">
+  <md-content class="md-padding" ng-cloak>
+      <div class="starter-template">
+        <h1>PESQUISA</h1>
+        <p class="lead">
+        </p>
+      </div>
+  </md-content>
+</div>
+
+<div layout="row" layout-xs="column" ng-controller="PesquisageralCtrl as pesquisageral">
+	
+    <div flex>
+    	<!-- container do conteúdo do blog -->
+    	<md-content class="md-padding">
+    		<h3>Responda uma pesquisa</h3>
+		    <h4><i>Veja algumas pesquisas que estão em andamento.</i></h4>
+		    <div class="list-group" >
+		      <a href="#/responder_pesquisa/{{pesquisa.id}}" class="list-group-item" ng-repeat="pesquisa in pesquisasPublicadas">
+		        <h4 class="list-group-item-heading">{{pesquisa.titulo}}</h4>
+		        <p class="list-group-item-text">{{pesquisa.subTitulo}}</p>
+		        <i><p class="list-group-item-text">Autor: {{pesquisa.autor.nome}}</p></i>
+		        <i><p>Data de Criação: {{ pesquisa.dataCriacao | date:"dd/MM/yyyy HH:mm:ss" }}</p></i>
+		      </a>
+		    </div>
+		    <!--
+		    <p><a class="btn btn-default" href="" role="button">Ver mais &raquo;</a></p>
+			-->
+    	</md-content>
+    </div>
+	
+	<!-- container do conteúdo do menu do blog -->
+    <div  flex>
+    	<md-content class="md-padding">
+    		<h3>Pesquisas Realizadas</h3>
+		    <h4><i>Confira os trabalhos realizados.</i></h4>
+		    <div class="list-group" >
+		      <a href="#/avaliacao_pesquisa/pesquisa/{{pesquisa.id}}" class="list-group-item" ng-repeat="pesquisa in pesquisasEncerradas">
+		        <h4 class="list-group-item-heading">{{pesquisa.titulo}}</h4>
+		        <p class="list-group-item-text">{{pesquisa.subTitulo}}</p>
+		        <i><p class="list-group-item-text">Autor: {{pesquisa.autor.nome}}</p></i>
+		        <i><p>Encerrada em: {{ pesquisa.dataEncerramento | date:"dd/MM/yyyy" }}</p></i>
+		      </a>
+		    </div>
+		    <!--
+		    <p><a class="btn btn-default" href="" role="button">Ver mais &raquo;</a></p>
+			-->
+    	</md-content>
+    </div>
+
+    <div flex>
+    	<md-content class="md-padding">
+    		<h3>Sugira uma pesquisa</h3>
+		    <h4><i>Preencha o formulário e dê sua sugestão para novas pesquisas.</i></h4>
+		    <form>
+		      <div class="form-group">
+		        <input type="email" class="form-control" id="emailContato" placeholder="E-mail">
+		      </div>
+		      <div class="form-group">
+		        <textarea id="mensagemContato" class="form-control" rows="3" placeholder="Mensagem"></textarea>
+		      </div>
+		      <button type="submit" class="btn btn-primary">Enviar</button>
+		    </form>
+    	</md-content>
+    </div>
+<!--
+    <div flex>
+		<md-content class="md-padding">
+		<canvas id="bar" class="chart chart-bar"
+		  chart-data="data" chart-labels="labels" chart-series="series" chart-legend="true">
+		</canvas>
+		</md-content>
+    </div>
+-->
+    
+  </div>
+  <div layout="row" layout-xs="column">
+
+    
+    </div>
+<hr class="featurette-divider">
+
+
+<!--
+<div layout="row">
+
+  <div class="panel panel-default">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Pesquisa: Cores Preferidas da Turma</h3>
+    </div>
+    <div class="panel-body">
+      <p>
+        A pesquisa sobre as cores preferidas da turma foi realizada dia 19 de novembro, na turma da Professora Marta na escola Municipal Aprendendo e o resultado pode ser visto no gráfico abaixo:
+      </p>
+  
+    </div>
+    <div class="panel-footer">
+      Fonte: Gráfico fictício.
+    </div>
+  </div>
+
+</div>
+-->

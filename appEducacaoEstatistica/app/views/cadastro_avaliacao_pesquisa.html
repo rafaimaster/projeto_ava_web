@@ -1,0 +1,75 @@
+<md-content class="md-padding" ng-controller="AvaliacaopesquisaCtrl as avaliacaopesquisaCtrl">
+
+	<md-button class="md-fab md-primary" aria-label="Voltar" ng-href="#/lista_pesquisa">
+        <md-icon md-svg-src="images/ic_arrow_back_white_48px.svg"></md-icon>
+    </md-button>
+
+    <div ng-repeat="(key,val) in alerts" class="alert {{key}}" role="alert">
+    	<button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="clearAlerts()">
+      		<span aria-hidden="true">&times;</span>
+      	</button>
+        <div ng-repeat="msg in val">{{msg}}</div>
+    </div>
+
+	<h3 class="page-header">Avaliar Pesquisa</h3>
+
+	<form name="form" role="form" ng-submit="addAvaliacaoPesquisa()" cg-busy="promessaFormulario">
+
+		<div layout="row" layout-xs="column">
+		  <div flex >
+		    <div layout="column">
+				<md-input-container class="md-block" flex-gt-sm>
+					<label>Título</label>
+					<input name="nome" ng-model="avaliacaoPesquisa.titulo" ng-required="true" ng-focus="true">
+				</md-input-container>
+
+				<md-input-container class="md-block" flex-gt-sm aria-label="Descrição">
+					<text-angular ng-model="avaliacaoPesquisa.descricao"  ng-required="true"></text-angular>
+				</md-input-container>
+		    </div>
+		  </div>
+		  <div flex >
+		    <div layout="column" style="padding-left:20px; padding-right: 20px;">
+		    	<div layout="row" flex-gt-xs>
+				    <md-input-container class="md-block" flex-gt-xs>
+			        	<label>Pergunta 1</label>
+			        	<md-select ng-model="avaliacaoPesquisa.pergunta1" ng-model-options="{trackBy: '$value.id'}" ng-required="true"
+			        		ng-change="montarPerguntas2()">
+			            	<md-option ng-value="p1" ng-repeat="p1 in perguntas1">
+			            		{{p1.descricao}}
+			            	</md-option>
+			        	</md-select>
+			        </md-input-container>
+
+			        <md-input-container class="md-block" flex-gt-xs>
+			        	<label>Pergunta 2</label>
+			        	<md-select ng-model="avaliacaoPesquisa.pergunta2" ng-model-options="{trackBy: '$value.id'}"
+			        		ng-change="changePergunta2()">
+			            	<md-option ng-value="p2" ng-repeat="p2 in perguntas2">
+			            		{{p2.descricao}}
+			            	</md-option>
+			        	</md-select>
+			        </md-input-container>	
+		       	</div>
+		    	<md-input-container class="md-block">
+			        <label>Tipo de Gráfico</label>
+		        	<md-select ng-model="tipoGrafico" ng-model-options="{trackBy: '$value.id'}" ng-required="true" ng-change="trocarGrafico()">
+		            	<md-option ng-value="t" ng-repeat="t in tiposGrafico">
+		            		{{t.nome}}
+		            	</md-option>
+		        	</md-select>
+
+		        </md-input-container>
+				
+				<canvas id="bar" class="chart-base" chart-type="type"
+				  chart-data="data" chart-labels="labels" chart-series="series" chart-legend="true" >
+				</canvas>
+			</div> 
+		  </div>
+		</div>
+
+		<button class="btn btn-success">SALVAR</button>
+		
+	</form>
+
+</md-content>

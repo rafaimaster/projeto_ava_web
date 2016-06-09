@@ -1,0 +1,63 @@
+
+<md-content class="md-padding">
+
+<!-- Botao de inclusao -->
+	<md-button class="md-fab md-primary" aria-label="Nova Pesquisa" ng-href="#/cadastro_pesquisa">
+        <md-icon md-svg-src="images/ic_add_white_48px.svg"></md-icon>
+    </md-button>
+
+
+  <h3 class="page-header">
+    Minhas Pesquisas
+  </h3>
+
+  <h2 class="sub-header">
+  	<!--
+    <button type="button" class="btn btn-default btn-sm" ng-click="viewAddPost()">Nova Postagem</button>
+	-->
+    <div class="btn-group" ng-show="mostraFiltro()">
+      <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Filtrar <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <!--<li><a href="" ng-click="buscarTodos()">Mostrar todos</a></li>-->
+        <li><a href="" ng-click="buscarMinhasPesquisas()">Minhas Pesquisas</a></li>
+        <li><a href="" ng-click="buscarPesquisasDosAlunos()">Pesquisas dos meus alunos</a></li>
+      </ul>
+    </div>
+  </h2>
+
+	<!-- lista de turmas -->
+	<md-list ng-cloak ng-repeat="pesquisa in pesquisas">
+
+		<md-list-item class="secondary-button-padding" ng-click="true">
+
+			<!-- botao de exclusao -->
+			<md-button class="md-fab md-mini" aria-label="Remover Pesquisa" ng-show="mostraBotaoRemover(pesquisa.autor, pesquisa.situacao.id)" ng-click="confirmaExclusao(pesquisa, $event)">
+	        	<md-icon md-svg-src="images/ic_delete_white_48px.svg"></md-icon>
+	    	</md-button>
+
+	    	<!-- botao de publicacao -->
+	    	<md-button class="md-fab md-mini" aria-label="Publicar Pesquisa" ng-show="mostraBotaoPublicar(pesquisa.situacao.id)" ng-click="confirmaPublicacao(pesquisa, $event)">
+	        	<md-icon md-svg-src="images/ic_share_white_48px.svg"></md-icon>
+	    	</md-button>
+
+	    	<md-button class="md-fab md-mini" aria-label="Visualizar Pesquisa" ng-click="verPesquisa(pesquisa, $event)">
+	        	<md-icon md-svg-src="images/ic_pageview_white_48px.svg"></md-icon>
+	    	</md-button>
+
+	    	<md-button class="md-fab md-mini" aria-label="Avaliar Pesquisa" ng-click="editarAvaliacao(pesquisa, $event)">
+	        	<md-icon md-svg-src="images/ic_assessment_white_48px.svg"></md-icon>
+	    	</md-button>
+	    
+			<p ng-click="editPesquisa(pesquisa, $event)">{{ pesquisa.titulo }}</p>
+			<p ng-click="editPesquisa(pesquisa, $event)">{{ pesquisa.subTitulo }}</p>
+			<p ng-click="editPesquisa(pesquisa, $event)">{{ pesquisa.situacao.descricao }}</p>
+			<p hide-sm hide-xs show-gt-xs ng-click="editPesquisa(pesquisa, $event)">{{ pesquisa.autor.nome }}</p>
+			<p hide-sm hide-xs show-gt-xs ng-click="editPesquisa(pesquisa, $event)">{{ pesquisa.dataCriacao | date:"dd/MM/yyyy HH:mm:ss" }}</p>
+
+		</md-list-item>
+
+	</md-list>
+
+</md-content>

@@ -1,0 +1,34 @@
+
+
+	<div class="container" ng-controller="AuthenticationCtrl as authenticationCtrl">
+			
+
+		<div ng-repeat="(key,val) in alerts" class="alert {{key}}" role="alert">
+	    	<button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="clearAlerts()">
+	      		<span aria-hidden="true">&times;</span>
+	      	</button>
+	        <div ng-repeat="msg in val">{{msg}}</div>
+	    </div>
+
+		<form class="form-signin" ng-submit="login()" md-autofocus>
+			<h2 class="form-signin-heading">Login</h2>
+			
+
+			<md-input-container class="md-block">
+		      <!-- Use floating placeholder instead of label -->
+		      <md-icon md-svg-src="images/ic_email_black_48px.svg" class="email"></md-icon>
+		      <input type="email" ng-model="loginUsuario.email" placeholder="Email" ng-required="true">
+		    </md-input-container>
+
+		    <md-input-container class="md-block">
+		    	<md-icon md-svg-src="images/ic_lock_black_48px.svg" class="password"></md-icon>
+				<input type="password" id="inputPassword" ng-model="loginUsuario.senha"
+						placeholder="Senha" ng-required="true">
+			</md-input-container>	
+			
+			<div class="bottom-sheet-demo inset" layout="row" layout-sm="column" layout-align="center" >
+    			<md-button flex="50" class="md-primary md-raised" type="submit">Entrar</md-button>
+  			</div>
+
+		</form>
+	</div>

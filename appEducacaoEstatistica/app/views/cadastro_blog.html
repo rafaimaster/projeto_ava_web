@@ -1,0 +1,27 @@
+
+
+<md-content class="md-padding" ng-controller="BlogCtrl as blogCtrl">
+
+	<md-button class="md-fab md-primary" aria-label="Voltar" ng-href="#/lista_blog">
+        <md-icon md-svg-src="images/ic_arrow_back_white_48px.svg"></md-icon>
+    </md-button>
+
+	<h3 class="page-header">Post</h3>
+
+	<form name="form" role="form" ng-submit="addPost()" cg-busy="promessaFormulario">
+		<md-input-container class="md-block" flex-gt-sm>
+			<label>Título</label>
+			<input name="nome" ng-model="post.titulo" ng-required="true" ng-focus="true">
+		</md-input-container>
+
+		<md-input-container class="md-block" flex-gt-sm aria-label="Conteúdo">
+			<label></label>
+			<text-angular ng-model="post.conteudo"  ng-required="true"></text-angular>
+				
+		</md-input-container>
+
+		<button class="btn btn-success">SALVAR</button>
+		
+	</form>
+
+</md-content>

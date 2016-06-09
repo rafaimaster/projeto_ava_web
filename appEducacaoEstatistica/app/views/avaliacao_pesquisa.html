@@ -1,0 +1,49 @@
+<md-content class="md-padding" ng-cloak ng-controller="ResponderpesquisaCtrl as responderpesquisa">
+
+	<md-button class="md-fab md-primary" aria-label="Voltar" ng-href="#/pesquisa">
+        <md-icon md-svg-src="images/ic_arrow_back_white_48px.svg"></md-icon>
+    </md-button>
+
+
+	<div class="ng-scope layout-row">
+
+
+	    <div  class="flex" ng-show="possuiAvaliacao">
+
+	    	<!-- container do conteúdo do blog -->
+	    	<md-content class="md-padding">
+	    		
+	    		<div layout="row" layout-xs="column">
+					<div flex >
+			    		<div layout="column" style="padding-left:20px; padding-right: 20px;">
+			     			<h2 class="blog-post-title">{{ avaliacaoPesquisa.titulo }}</h2>
+
+			     			<h6>Pesquisa: {{ avaliacaoPesquisa.pesquisa.titulo }}</h6>
+			     			<br/>
+			            	<h4>Perguntas:</h4>
+			            	<p>{{avaliacaoPesquisa.pergunta1.descricao}}</p>
+			            	<p>{{avaliacaoPesquisa.pergunta2.descricao}}</p>
+			            	<br/>
+			            	<h4>Considerações:</h4>
+			      			<div ng-bind-html="avaliacaoPesquisa.descricao"></div>
+			      			<br/>
+		      			</div>
+
+					</div>
+
+					<div flex >
+						<h2 class="blog-post-title">Gráfico:</h2>
+			    		<div layout="column" style="padding-left:20px; padding-right: 20px;">
+							<canvas id="bar1" class="chart-base" chart-type="type"
+							  chart-data="data" chart-labels="labels" chart-series="series" chart-legend="true" >
+							</canvas>
+						</div>
+					</div>
+				</div>
+	    	</md-content>
+	    </div>
+		<div  class="flex" ng-show="!possuiAvaliacao">
+			<h2>A pesquisa ainda não possui avaliação cadastrada.</h2>
+		</div>
+	</div>
+</md-content>

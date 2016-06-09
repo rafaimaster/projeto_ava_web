@@ -1,0 +1,48 @@
+
+<md-content class="md-padding" ng-controller="TurmaCtrl as turmaCtrl">
+
+	<md-button class="md-fab md-primary" aria-label="Voltar" ng-href="#/lista_turma">
+        <md-icon md-svg-src="images/ic_arrow_back_white_48px.svg"></md-icon>
+    </md-button>
+
+	<h3 class="page-header">Turma</h3>
+
+	<form name="form" role="form" ng-submit="addTurma()" cg-busy="promessaFormulario">
+		<md-input-container class="md-block" flex-gt-sm>
+			<label>Nome</label>
+			<input name="nome" ng-model="turma.nome" ng-required="true" ng-focus="true">
+		</md-input-container>
+
+	    <md-input-container class="md-block" flex-gt-xs>
+        	<label>Ano</label>
+        	<md-select ng-model="turma.anoTurma" ng-model-options="{trackBy: '$value.id'}" ng-required="true">
+	        	<md-option ng-repeat="anoTurma in anosTurma" ng-value="anoTurma">
+	        		{{anoTurma.descricao}}
+	        	</md-option>
+        	</md-select>
+        </md-input-container>
+
+		<button class="btn btn-success">SALVAR</button>
+		
+	</form>
+
+	<md-content class="md-padding" ng-show="turma.id != undefined">
+		<div>
+		    <h3><md-button class="md-fab md-primary" aria-label="Novo Aluno" ng-click="novoAluno(turma, $event)">
+		        <md-icon md-svg-src="images/ic_add_white_48px.svg"></md-icon>
+		    </md-button>Incluir novo aluno</h3>
+	    </div>
+	
+	  	<!-- lista de turmas -->
+		<md-list ng-cloak ng-repeat="aluno in alunos">
+			<md-list-item class="secondary-button-padding" ng-click="true" aria-label="Aluno">
+				<!-- botao de exclusao -->
+				<md-button class="md-fab md-mini" aria-label="Remover Aluno" ng-click="confirmaExclusaoAluno(aluno, $event)">
+		        	<md-icon md-svg-src="images/ic_delete_white_48px.svg"></md-icon>
+		    	</md-button>
+				<p ng-click="editAluno(aluno, $event)">{{ aluno.nome }}</p>
+			</md-list-item>
+		</md-list>
+	</md-content>
+
+</md-content>

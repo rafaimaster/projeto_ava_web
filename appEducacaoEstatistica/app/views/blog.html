@@ -1,0 +1,59 @@
+<div class="header cabecalho">
+  <md-content class="md-padding" ng-cloak>
+      <div class="starter-template">
+        <h1>BLOG</h1>
+        <p class="lead">
+        </p>
+      </div>
+  </md-content>
+</div>
+<div class="ng-scope layout-row">
+	
+    <div  class="flex">
+
+    	<!-- container do conteúdo do blog -->
+    	<md-content class="md-padding">
+    		<div class="col-sm-12 blog-main" ng-repeat="post in postsPublicados">
+
+     				<h2 class="blog-post-title">{{ post.titulo }}</h2>
+
+            <h6>Autor: {{ post.autor.nome }}</h6>
+            <h6>Data de Criação: {{post.dataCriacao | date:"dd/MM/yyyy HH:mm:ss"}}</h6>
+            <br/>
+            <br/>
+      			<div ng-bind-html="post.conteudo"></div>
+
+      			<br/>
+            <br/>
+
+      			<hr class="featurette-divider">
+
+    		</div><!-- /.blog-main -->
+    	</md-content>
+    </div>
+	
+	<!-- container do conteúdo do menu do blog -->
+    <!--
+    <div hide-sm hide-xs show-gt-xs class="flex-20">
+    	<md-content class="md-padding" style="background-color: #ccc;">
+    		<div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+      			<div class="sidebar-module">
+        			<h4>Arquivos</h4>
+			        <ol class="list-unstyled">
+			          <li><a href="#">Março 2015</a></li>
+			          <li><a href="#">Fevereiro 2015</a></li>
+			          <li><a href="#">Janeiro 2015</a></li>
+			          <li><a href="#">Dezembro 2014</a></li>
+			          <li><a href="#">Novembro 2014</a></li>
+			          <li><a href="#">Outubro 2014</a></li>
+			        </ol>
+      			</div>
+    		</div>
+    	</md-content>
+    </div>
+    -->
+    <!-- /.blog-sidebar -->
+
+
+
+  </div>

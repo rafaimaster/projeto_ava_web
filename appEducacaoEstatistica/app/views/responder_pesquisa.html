@@ -1,0 +1,43 @@
+<md-content class="md-padding" ng-cloak ng-controller="ResponderpesquisaCtrl as responderpesquisa">
+
+	<md-button class="md-fab md-primary" aria-label="Voltar" ng-href="#/pesquisa">
+        <md-icon md-svg-src="images/ic_arrow_back_white_48px.svg"></md-icon>
+    </md-button>
+
+    <div ng-repeat="(key,val) in alerts" class="alert {{key}}" role="alert">
+	    	<button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="clearAlerts()">
+      		<span aria-hidden="true">&times;</span>
+      	</button>
+        <div ng-repeat="msg in val">{{msg}}</div>
+    </div>
+
+	<div class="panel panel-default" ng-show="pesquisaVO != undefined" >
+	  <!-- Default panel contents -->
+	  <div class="panel-heading"><h2>{{ pesquisaVO.titulo }}</h2></div>
+	  <div class="panel-body">
+	    <h3 style="color: #ccc;">{{ pesquisaVO.subTitulo }}</h3>
+	  </div>
+
+	  <!-- List group -->
+	  <ul class="list-group listUL" ng-repeat="perguntaVO in pesquisaVO.perguntas">
+	  	<h4>{{ perguntaVO.descricao }}</h4>
+	    <li class="lista">
+	    	<md-radio-group ng-model="alternativaVO" class="md-primary" ng-click="addResposta(perguntaVO, alternativaVO)">
+				<md-radio-button ng-repeat="alternativaVO in perguntaVO.alternativas"
+									ng-value="alternativaVO"
+			                        ng-disabled="false"
+			                        ng-class="md-align-top-left"
+			                        >
+		            {{ alternativaVO.descricao }}<br/>
+		        </md-radio-button>
+			</md-radio-group>
+	    </li>
+	  </ul>
+
+	<md-button class="md-raised md-primary" ng-click="enviarResposta()">
+		ENVIAR RESPOSTA
+		</md-button>
+	</div>
+	
+
+</md-content>

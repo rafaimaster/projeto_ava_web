@@ -1,0 +1,59 @@
+
+<md-content class="md-padding">
+
+<!-- Botao de inclusao -->
+	<md-button class="md-fab md-primary" aria-label="Novo Blog" ng-href="#/cadastro_blog">
+        <md-icon md-svg-src="images/ic_add_white_48px.svg"></md-icon>
+    </md-button>
+
+
+  <h3 class="page-header">
+    Minhas Publicações
+  </h3>
+
+  <h2 class="sub-header">
+  	<!--
+    <button type="button" class="btn btn-default btn-sm" ng-click="viewAddPost()">Nova Postagem</button>
+	-->
+    <div class="btn-group" ng-show="mostraFiltro()">
+      <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Filtrar <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <!--<li><a href="" ng-click="buscarTodos()">Mostrar todos</a></li>-->
+        <li><a href="" ng-click="buscarMeusPosts()">Minhas Publicações</a></li>
+        <li><a href="" ng-click="buscaPostsAlunos()">Publicações dos meus alunos</a></li>
+      </ul>
+    </div>
+  </h2>
+
+	<!-- lista de turmas -->
+	<md-list ng-cloak ng-repeat="post in postagens">
+
+		<md-list-item class="secondary-button-padding" ng-click="true">
+
+			<!-- botao de exclusao -->
+			<md-button class="md-fab md-mini" aria-label="Remover Blog" ng-show="mostraBotaoRemover(post.autor, post.situacaoBlog.id)" ng-click="confirmaExclusao(post, $event)">
+	        	<md-icon md-svg-src="images/ic_delete_white_48px.svg"></md-icon>
+	    	</md-button>
+
+	    	<!-- botao de publicacao -->
+	    	<md-button class="md-fab md-mini" aria-label="Publicar Blog" ng-show="mostraBotaoPublicar(post.situacaoBlog.id)" ng-click="confirmaPublicacao(post, $event)">
+	        	<md-icon md-svg-src="images/ic_share_white_48px.svg"></md-icon>
+	    	</md-button>
+
+	    	<!-- botao de visualizacao -->
+	    	<md-button class="md-fab md-mini" aria-label="Visualizar Blog" ng-click="verPost(post, $event)">
+	        	<md-icon md-svg-src="images/ic_pageview_white_48px.svg"></md-icon>
+	    	</md-button>
+
+			<p ng-click="editBlog(post, $event)">{{ post.titulo }}</p>
+			<p ng-click="editBlog(post, $event)">{{ post.situacaoBlog.descricao }}</p>
+			<p hide-sm hide-xs show-gt-xs ng-click="editBlog(post, $event)">{{ post.autor.nome }}</p>
+			<p hide-sm hide-xs show-gt-xs ng-click="editBlog(post, $event)">{{post.dataCriacao | date:"dd/MM/yyyy HH:mm:ss"}}</p>
+
+		</md-list-item>
+
+	</md-list>
+
+</md-content>

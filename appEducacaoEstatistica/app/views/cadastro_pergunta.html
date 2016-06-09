@@ -1,0 +1,60 @@
+
+<md-content class="md-padding" ng-controller="PerguntaCtrl as perguntaCtrl">
+
+	<div ng-repeat="(key,val) in alerts" class="alert {{key}}" role="alert">
+	    	<button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="clearAlerts()">
+	      		<span aria-hidden="true">&times;</span>
+	      	</button>
+	        <div ng-repeat="msg in val">{{msg}}</div>
+	    </div>
+
+	<md-button class="md-fab md-primary" aria-label="Voltar" ng-click="limparFormulario()">
+        <md-icon md-svg-src="images/ic_arrow_back_white_48px.svg"></md-icon>
+    </md-button>
+
+	<h3 class="page-header">Pergunta</h3>
+
+	<form name="form" role="form" ng-submit="addPergunta()" cg-busy="promessaFormulario">
+		<md-input-container class="md-block" flex-gt-sm>
+			<label>Pergunta</label>
+			<input name="descricao" ng-model="pergunta.descricao" ng-required="true" ng-focus="true">
+		</md-input-container>
+
+		<button class="btn btn-success">SALVAR</button>		
+	</form>
+
+	
+
+	<div layout="column" layout-padding layout-wrap layout-fill style="padding-bottom: 32px;" ng-cloak
+			ng-show="pergunta.id != undefined">
+		<h3 class="page-header">Opções de Resposta</h3>	
+
+		 <form name="form" role="form" cg-busy="promessaFormulario">
+			<div layout-gt-xs="row">
+				<!--
+			<md-button class="md-fab md-mini md-primary" ng-click="addAlternativa()">
+			 <md-icon md-svg-src="images/ic_add_white_48px.svg"></md-icon>
+			</md-button>
+		-->
+			<div style="margin-top: 15px">
+			<button class="btn btn-success" ng-click="addAlternativa()">SALVAR</button>
+			</div>
+			<md-input-container class="md-block" flex-gt-sm>
+				<label>Alternativa</label>
+				<input name="descricao" ng-model="alternativa.descricao" ng-required="true" ng-focus="true">
+			</md-input-container>
+			</div>
+		</form>
+		<md-list ng-cloak ng-repeat="alternativa in alternativas">
+			<md-whiteframe class="md-whiteframe-5dp"  layout layout-align="left center" >
+				<md-list-item class="secondary-button-padding" ng-click="true" aria-label="Alternativa" style="width:100%;">
+					<!-- botao de exclusao -->
+					<md-button class="md-icon-button" aria-label="Remover Alternativa" ng-click="confirmaExclusaoAlternativa(alternativa, $event)">
+			        	<md-icon md-svg-src="images/ic_clear_black_48px.svg"></md-icon>
+			    	</md-button>
+					<p >{{ alternativa.descricao }}</p>
+				</md-list-item>
+			 </md-whiteframe>
+		</md-list>
+	</div>
+</md-content>

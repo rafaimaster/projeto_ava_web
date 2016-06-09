@@ -1,0 +1,120 @@
+
+<md-content class="md-padding" ng-cloak>
+
+	<md-button class="md-fab md-primary" aria-label="Voltar" ng-href="#/lista_pesquisa">
+        <md-icon md-svg-src="images/ic_arrow_back_white_48px.svg"></md-icon>
+    </md-button>
+
+	<h3 class="page-header">Visualização</h3>
+	<div class="panel panel-default" ng-repeat="pesquisaVO in pesquisasView">
+	  <!-- Default panel contents -->
+	  <div class="panel-heading"><h2>{{ pesquisaVO.titulo }}</h2></div>
+	  <div class="panel-body">
+	    <h3 style="color: #ccc;">{{ pesquisaVO.subTitulo }}</h3>
+	  </div>
+
+	  <!-- List group -->
+	  <ul class="list-group listUL" ng-repeat="perguntaVO in pesquisaVO.perguntas">
+	  	<h4>{{ perguntaVO.descricao }}</h4>
+	    <li class="lista">
+	    	<md-radio-group ng-model="data.group2" class="md-primary">
+						<md-radio-button ng-repeat="alternativaVO in perguntaVO.alternativas"
+						ng-value="alternativaVO.id"
+		                         ng-disabled="false"
+		                         ng-class="md-align-top-left" >
+				            {{ alternativaVO.descricao }}<br/>
+				        </md-radio-button>
+					</md-radio-group>
+	    </li>
+	  </ul>
+	</div>
+
+</md-content>
+
+
+<!--
+
+<ul class="lista" ng-repeat="pesquisaVO in pesquisasView">
+			<h2>{{ pesquisaVO.titulo }}</h2>
+			<li ng-repeat="perguntaVO in pesquisaVO.perguntas">
+				<h3>{{ perguntaVO.descricao }}</h3>
+				<md-radio-group ng-model="data.group2" class="md-primary">
+					<md-radio-button ng-repeat="alternativaVO in perguntaVO.alternativas"
+					ng-value="alternativaVO.id"
+	                         ng-disabled="true"
+	                         ng-class="md-align-top-left" >
+			            {{ alternativaVO.descricao }}<br/>
+			        </md-radio-button>
+				</md-radio-group>
+			</li>
+		
+	</ul>
+
+<md-content ng-cloak>
+
+	<md-list  layout="column">
+
+		<md-list-item class="md-3-line" ng-repeat="pesquisaVO in pesquisasView">
+        <div class="md-list-item-text">
+          <p>{{ pesquisaVO.titulo }}</p>
+			<p>{{ pesquisaVO.subTitulo }}</p>
+        </div>
+		<md-divider ></md-divider>
+        <md-list-item class="md-3-line" ng-repeat="perguntaVO in pesquisaVO.perguntas">
+	        <div class="md-list-item-text" layout="column">
+	          <p>{{ perguntaVO.descricao }}</p>
+	        </div>
+      	
+	        <md-list-item class="md-3-line" ng-repeat="alternativaVO in perguntaVO.alternativas">
+		        <div class="md-list-item-text" layout="column">
+		          <p>{{ alternativaVO.descricao }}</p>
+		        </div>
+	      	</md-list-item>
+
+
+      	</md-list-item>
+
+
+      </md-list-item>
+		<md-divider ></md-divider>
+
+		
+
+	</md-list>
+</md-content>
+
+
+ <md-content >
+      <md-list flex ng-repeat="pesquisaVO in pesquisasView">
+        <md-subheader class="md-no-sticky">3 line item</md-subheader>
+        <md-list-item class="md-3-line" >
+          
+          <div class="md-list-item-text" layout="column">
+            <h3>{{ pesquisaVO.titulo }}</h3>
+            <h4>{{ pesquisaVO.subTitulo }}</h4>
+          </div>
+          <md-divider ></md-divider>
+
+        </md-list-item>
+        <md-list-item class="md-3-line" ng-repeat="perguntaVO in pesquisaVO.perguntas">
+	          
+	          <div class="md-list-item-text" layout="column">
+	            <h3>{{ perguntaVO.descricao }}</h3>
+	          </div>
+	          
+
+	          <md-list flex ng-repeat="pesquisaVO in pesquisasView">
+	          	<md-list-item class="md-3-line" ng-repeat="alternativaVO in perguntaVO.alternativas">
+		        <div class="md-list-item-text" layout="column">
+		          <p>{{ alternativaVO.descricao }}</p>
+		        </div>
+	      	</md-list-item>
+
+	          </md-list>
+	          
+	        </md-list-item>
+		 
+ </md-list>
+    </md-content>
+
+-->
